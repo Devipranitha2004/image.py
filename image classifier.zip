@@ -1,0 +1,13 @@
+import cv2
+face_cas=cv2.CascadeClassifier('harcascade.xml')
+vid=cv2.VideoCapture(0)
+while 1:
+    _,img=vid.read()
+    cv2.imshow("img", img)
+
+    face2 = face_cas.detectMultiScale(img, 1.6, 2)
+    for (x, y, w, h) in face2:
+        cv2.rectangle(img, (x, y), (x + w, y + h), (255, 255, 0), 2)
+        print(w)
+        cv2.imshow("img1", img)
+        cv2.waitKey(1)
